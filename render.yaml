@@ -3,8 +3,8 @@ services:
     name: vibecraft-music-bot
     runtime: docker
     plan: starter
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
+    dockerfilePath: ./bot/Dockerfile
+    dockerContext: ./bot
     disk:
       name: music-bot-data
       mountPath: /app/data
