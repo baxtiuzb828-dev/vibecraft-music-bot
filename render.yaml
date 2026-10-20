@@ -1,0 +1,16 @@
+services:
+  - type: worker
+    name: vibecraft-music-bot
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    disk:
+      name: music-bot-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DATABASE_PATH
+        value: /app/data/music_bot.sqlite3

@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/music_bot/__init__.py
+src/music_bot/__main__.py
+src/music_bot/audio.py
+src/music_bot/bot.py
+src/music_bot/config.py
+src/music_bot/database.py
+src/telegram_music_bot.egg-info/PKG-INFO
+src/telegram_music_bot.egg-info/SOURCES.txt
+src/telegram_music_bot.egg-info/dependency_links.txt
+src/telegram_music_bot.egg-info/requires.txt
+src/telegram_music_bot.egg-info/top_level.txt
+tests/test_audio.py
+tests/test_database.py

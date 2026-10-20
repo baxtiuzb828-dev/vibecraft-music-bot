@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: telegram-music-bot
+Version: 0.1.0
+Summary: Telegram bot MVP for audio effects, ringtone clips, and favorites
+Requires-Python: >=3.11
+Requires-Dist: aiogram<4.0,>=3.20
+Requires-Dist: python-dotenv<2.0,>=1.0

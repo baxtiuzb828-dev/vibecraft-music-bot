@@ -1,0 +1,14 @@
+services:
+  music-bot:
+    build: .
+    container_name: vibecraft-music-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_PATH: /app/data/music_bot.sqlite3
+    volumes:
+      - bot-data:/app/data
+
+volumes:
+  bot-data:
