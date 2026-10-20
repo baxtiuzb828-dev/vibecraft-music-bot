@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 import tempfile
 import uuid
 from pathlib import Path
@@ -430,8 +431,21 @@ async def make_ringtone(callback: CallbackQuery) -> None:
     await send_processed(callback, duration, upload_key)
 
 
+async def _health_check(_reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
+    writer.write(b"HTTP/1.1 200 OK\r\nContent-Length: 2\r\nConnection: close\r\n\r\nOK")
+    await writer.drain()
+    writer.close()
+    await writer.wait_closed()
+
+
 async def run_bot() -> None:
-    await dispatcher.start_polling(bot)
+    port = int(os.getenv("PORT", "8080"))
+    server = await asyncio.start_server(_health_check, "0.0.0.0", port)
+    try:
+        await dispatcher.start_polling(bot)
+    finally:
+        server.close()
+        await server.wait_closed()
 
 
 def main() -> None:
